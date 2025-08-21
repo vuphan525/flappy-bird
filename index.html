@@ -327,21 +327,21 @@
     for(let x=-tpx; x<W; x+=40){ ctx.fillRect(Math.floor(x), gy+18, 20, 8); }
   }
 
-  function drawBird(x,y,r,rot){
-    ctx.save();
-    ctx.translate(x,y); ctx.rotate(rot);
-    // body
-    const g = ctx.createLinearGradient(-r,0,r,0); g.addColorStop(0,'#ffd166'); g.addColorStop(1,'#fca311');
-    ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(0,0, r+3, r, 0, 0, Math.PI*2); ctx.fill();
-    // wing
-    ctx.fillStyle = '#ffe29a'; ctx.beginPath(); ctx.ellipse(-2,2, r*.55, r*.42, -0.4, 0, Math.PI*2); ctx.fill();
-    // eye
-    ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(r*0.2, -r*0.25, r*0.28, 0, Math.PI*2); ctx.fill();
-    ctx.fillStyle = '#111'; ctx.beginPath(); ctx.arc(r*0.28, -r*0.25, r*0.12, 0, Math.PI*2); ctx.fill();
-    // beak
-    ctx.fillStyle = '#ff6b6b'; ctx.beginPath(); ctx.moveTo(r*0.9, -2); ctx.lineTo(r*1.4, 0); ctx.lineTo(r*0.9, 2); ctx.closePath(); ctx.fill();
-    ctx.restore();
-  }
+  // Load image trước
+const birdImg = new Image();
+birdImg.src = "Ben1.jpg";
+
+function drawBird(x,y,r,rot){
+  ctx.save();
+  ctx.translate(x,y); 
+  ctx.rotate(rot);
+
+  // Vẽ ảnh thay cho hình ellipse
+  const size = r * 2; // r là bán kính mặc định trong game
+  ctx.drawImage(birdImg, -size/2, -size/2, size, size);
+
+  ctx.restore();
+}
 
   // ===== Simple WebAudio beeps (no assets) =====
   let audioCtx = null;
@@ -377,6 +377,7 @@
 </script>
 </body>
 </html>
+
 
 
 
