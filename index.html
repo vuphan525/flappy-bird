@@ -96,7 +96,7 @@
   // Difficulty
   let pipeGap = 150; // starting gap
   let pipeSpeed = 120; // px/sec
-  let spawnEvery = 2400; // ms
+  let spawnEvery = 2000; // ms
 
   // Bird
   const bird = { x: W*0.28, y: H*0.45, r: 14, vy: 0, rot: 0 };
@@ -121,7 +121,7 @@
   // ===== Entities =====
   function reset(){
     state='menu'; score=0; t=0; spawnTimer=0; pipes=[]; particles=[]; shake=0;
-    pipeGap=150; pipeSpeed=120; spawnEvery=2400;
+    pipeGap=150; pipeSpeed=120; spawnEvery=2000;
     bird.x=W*0.28; bird.y=H*0.45; bird.vy=0; bird.rot=0;
     createInitialClouds();
     updateScoreUi();
@@ -377,6 +377,7 @@
 </script>
 </body>
 </html>
+
 
 
 
